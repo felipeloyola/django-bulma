@@ -1,5 +1,5 @@
 {% load bulma_tags %}
-<div class="field {% if field.auto_id %} for="{{ field.auto_id }}" {% endif %}">
+<div class="field {% if field.auto_id %}field-container-{{ field.auto_id }}{% endif %}">
   {% if field|is_checkbox %}
 
     <div class="control {{ classes.single_value }}">
