@@ -149,7 +149,7 @@ def is_file(field):
 @register.filter
 def is_formset(field):
     print("#########################")
-    print(type(field), hasattr(field, 'management_form'))
+    print(type(field), hasattr(field, 'management_form'), field.field.widget)
     print("#########################")
     return hasattr(field, 'management_form')
 
