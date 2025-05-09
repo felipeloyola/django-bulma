@@ -1,5 +1,10 @@
 {% load bulma_tags %}
+{% if field|is_formset %}
+<fieldset class="box is-outlined"><legend class="label">{{ field.label }}</legend>
+{% else %}
 <div class="field {% if field.auto_id %}field-container-{{ field.auto_id }}{% endif %}">
+{% endif %}
+
   {% if field|is_checkbox %}
 
     <div class="control {{ classes.single_value }}">
@@ -130,7 +135,7 @@
 
   {% else %}
 
-    {% if field.auto_id %}
+    {% if field.auto_id and not field|is_formset %}
       <label class="label {{ classes.label }} {% if field.field.required %}{{ form.required_css_class }}{% endif %}"
              for="{{ field.auto_id }}">{{ field.label }}</label>
     {% endif %}
@@ -150,4 +155,9 @@
     </div>
 
   {% endif %}
+
+{% if field|is_formset %}
+</fieldset>
+{% else %}
 </div>
+{% endif %}
