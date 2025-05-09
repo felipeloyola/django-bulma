@@ -149,9 +149,9 @@ def is_file(field):
 @register.filter
 def is_formset(field):
     print("#########################")
-    print(field, type(field), isinstance(field, forms.formsets.BaseFormSet))
+    print(type(field), hasattr(field, 'management_form'))
     print("#########################")
-    return isinstance(field, forms.formsets.BaseFormSet)
+    return hasattr(field, 'management_form')
 
 
 @register.filter
