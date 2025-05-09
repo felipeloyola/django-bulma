@@ -3,6 +3,7 @@ from django import template
 from django.forms import BoundField
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
+from django_form_builder.widgets import FormsetdWidget
 
 register = template.Library()
 
@@ -151,7 +152,7 @@ def is_formset(field):
     print("#########################")
     print(type(field), hasattr(field, 'management_form'), field.field.widget)
     print("#########################")
-    return hasattr(field, 'management_form')
+    return isinstance(field.field.widget, FormsetdWidget)
 
 
 @register.filter
