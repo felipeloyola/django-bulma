@@ -147,6 +147,11 @@ def is_file(field):
 
 
 @register.filter
+def is_formset(field):
+    return isinstance(field, forms.formsets.BaseFormSet)
+
+
+@register.filter
 def addclass(field, css_class):
     if len(field.errors) > 0:
         css_class += ' is-danger'
