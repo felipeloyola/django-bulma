@@ -148,7 +148,9 @@ def is_file(field):
 
 @register.filter
 def is_formset(field):
+    print("#########################")
     print(field, type(field), isinstance(field, forms.formsets.BaseFormSet))
+    print("#########################")
     return isinstance(field, forms.formsets.BaseFormSet)
 
 
