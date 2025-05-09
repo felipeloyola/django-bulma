@@ -3,6 +3,7 @@ from django import template
 from django.forms import BoundField
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
+from django_form_builder.widgets import FormsetdWidget
 
 register = template.Library()
 
@@ -144,6 +145,11 @@ def is_radio(field):
 @register.filter
 def is_file(field):
     return isinstance(field.field.widget, forms.FileInput)
+
+
+@register.filter
+def is_formset(field):
+    return isinstance(field.field.widget, FormsetdWidget)
 
 
 @register.filter
